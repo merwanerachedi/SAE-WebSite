@@ -2,7 +2,7 @@
 
 <footer class="footer-marco">
     <div class="container text-center">
-        <p class="mb-0">&copy; 2025 Chez Marco — Tous droits reserves</p>
+        <p class="mb-0">&copy; 2026 Chez Marco — Tous droits reserves</p>
     </div>
 </footer>
 
