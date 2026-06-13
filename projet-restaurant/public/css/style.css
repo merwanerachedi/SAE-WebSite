@@ -1,0 +1,207 @@
+/* ============================================
+   Chez Marco — Style global
+   Palette : noir #0C0E0B / bleu glace #D6E7F3
+             dore #c9a84c / rouge #D6303A
+   Typo   : Playfair Display (titres) / Inter (corps)
+   ============================================ */
+
+:root {
+    --color-noir: #0C0E0B;
+    --color-blanc: #D6E7F3;
+    --color-dore: #c9a84c;
+    --color-rouge: #D6303A;
+    --color-gris: #6c757d;
+    --color-gris-clair: #e9e5df;
+    --font-titre: 'Playfair Display', Georgia, serif;
+    --font-corps: 'Inter', system-ui, sans-serif;
+    --radius: 10px;
+    --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.08);
+    --transition: 0.2s ease;
+}
+
+/* --- Base --- */
+
+body {
+    background-color: var(--color-blanc);
+    font-family: var(--font-corps);
+    color: var(--color-noir);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-titre);
+    color: var(--color-noir);
+}
+
+/* --- Navbar --- */
+
+.navbar-marco {
+    background-color: var(--color-noir);
+    padding: 0.8rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-marco .navbar-brand {
+    font-family: var(--font-titre);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-dore);
+    transition: color var(--transition);
+}
+
+.navbar-marco .navbar-brand:hover {
+    color: #e0c068;
+}
+
+.navbar-marco .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.9rem;
+    transition: color var(--transition);
+}
+
+.navbar-marco .nav-link:hover {
+    color: var(--color-dore);
+}
+
+.navbar-marco .nav-link-admin {
+    color: var(--color-dore);
+    font-weight: 600;
+}
+
+.navbar-marco .btn-inscription {
+    background-color: var(--color-dore);
+    color: var(--color-noir) !important;
+    border-radius: 20px;
+    padding: 0.4rem 1.2rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+}
+
+.navbar-marco .btn-inscription:hover {
+    background-color: #e0c068;
+}
+
+.navbar-marco .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* --- Footer --- */
+
+.footer-marco {
+    background-color: var(--color-noir);
+    color: rgba(255, 255, 255, 0.6);
+    padding: 1.2rem 0;
+    margin-top: auto;
+    font-size: 0.85rem;
+}
+
+/* --- Boutons --- */
+
+.btn-primary,
+.btn-marco {
+    background-color: var(--color-rouge);
+    border: none;
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    transition: background-color var(--transition), transform var(--transition);
+}
+
+.btn-primary:hover,
+.btn-marco:hover {
+    background-color: #a93226;
+    transform: translateY(-1px);
+}
+
+.btn-outline-marco {
+    border: 2px solid var(--color-dore);
+    color: var(--color-dore);
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    background: transparent;
+    transition: all var(--transition);
+}
+
+.btn-outline-marco:hover {
+    background-color: var(--color-dore);
+    color: var(--color-noir);
+}
+
+/* --- Cartes --- */
+
+.card {
+    border: none;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition), box-shadow var(--transition);
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-title {
+    font-family: var(--font-titre);
+    font-weight: 600;
+}
+
+/* --- Badges --- */
+
+.badge {
+    font-size: 0.8rem;
+    border-radius: 20px;
+    padding: 0.35em 0.75em;
+}
+
+.badge-dore {
+    background-color: var(--color-dore);
+    color: var(--color-noir);
+}
+
+/* --- Prix --- */
+
+.prix {
+    font-family: var(--font-titre);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-rouge);
+}
+
+/* --- Alertes flash --- */
+
+.alert {
+    border-radius: var(--radius);
+    border: none;
+    font-weight: 500;
+}
+
+/* --- Formulaires --- */
+
+.form-control:focus {
+    border-color: var(--color-dore);
+    box-shadow: 0 0 0 0.2rem rgba(201, 168, 76, 0.25);
+}
+
+/* --- Tables admin --- */
+
+.table th {
+    background-color: var(--color-noir);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* --- Utilitaires --- */
+
+.text-dore { color: var(--color-dore); }
+.text-rouge { color: var(--color-rouge); }
+.bg-marco { background-color: var(--color-blanc); }
