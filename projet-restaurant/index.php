@@ -7,7 +7,10 @@ $action = $_GET['action'] ?? 'home';
 
 switch ($action) {
     case 'home':
-        echo 'Bienvenue chez Marco — routeur OK';
+        $title = 'Accueil';
+        require 'views/layout/header.php';
+        echo '<h2 class="mt-4">Bienvenue chez Marco</h2>';
+        require 'views/layout/footer.php';
         break;
     default:
         http_response_code(404);
