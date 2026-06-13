@@ -2,7 +2,7 @@
 // Redirige vers login si l'utilisateur n'est pas connecté
 function requireAuth(): void {
     if (!isset($_SESSION['user_id'])) {
-        header('Location: /?action=login');
+        header('Location: ' . BASE_URL . '?action=login');
         exit;
     }
 }
@@ -12,7 +12,7 @@ function requireRole(string $role): void {
     requireAuth();
     if ($_SESSION['role'] !== $role) {
         http_response_code(403);
-        die('<h2>Accès refusé.</h2><a href="/?action=home">Retour</a>');
+        die('<h2>Acces refuse.</h2><a href="' . BASE_URL . '?action=home">Retour</a>');
     }
 }
 
