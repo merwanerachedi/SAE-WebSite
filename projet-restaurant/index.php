@@ -33,6 +33,11 @@ switch ($action) {
     case 'categorie_delete':  $cat->delete();  break;
     
     case 'plats_admin':   $platCtrl->adminIndex(); break;
+    case 'plat_create':   $platCtrl->create();     break;
+    case 'plat_store':    $platCtrl->store();      break;
+    case 'plat_edit':     $platCtrl->edit();       break;
+    case 'plat_update':   $platCtrl->update();     break;
+    case 'plat_delete':   $platCtrl->delete();     break;
 
 
     default:
