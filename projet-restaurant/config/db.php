@@ -1,4 +1,6 @@
 <?php
+define('BASE_URL', '/projet-restaurant/');
+
 $host   = 'localhost';
 $dbname = 'restaurant_db';
 $user   = 'root';
