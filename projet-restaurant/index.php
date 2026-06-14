@@ -16,6 +16,9 @@ switch ($action) {
         break;
     case 'register':      $auth->showRegister(); break;
     case 'register_post': $auth->register();     break;
+    case 'login':         $auth->showLogin();    break;
+    case 'login_post':    $auth->login();        break;
+    case 'logout':        $auth->logout();       break;
     default:
         http_response_code(404);
         echo '404 - Page non trouvee';

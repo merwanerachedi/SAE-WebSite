@@ -45,4 +45,41 @@ class AuthController {
         header('Location: ' . BASE_URL . '?action=login');
         exit;
     }
+
+    // Affiche le formulaire de connexion
+    public function showLogin(): void {
+        $title = 'Connexion';
+        require 'views/auth/login.php';
+    }
+
+    // Traite la connexion
+    public function login(): void {
+        $email    = trim($_POST['email'] ?? '');
+        $password = $_POST['password'] ?? '';
+        $error    = null;
+
+        $user = $this->userModel->findByEmail($email);
+
+        if (!$user || !password_verify($password, $user['password'])) {
+            $error = 'Email ou mot de passe incorrect.';
+            $title = 'Connexion';
+            require 'views/auth/login.php';
+            return;
+        }
+
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['role']    = $user['role'];
+        $_SESSION['nom']     = $user['nom'];
+
+        $redirect = $user['role'] === 'admin' ? 'admin_dashboard' : 'plats';
+        header('Location: ' . BASE_URL . '?action=' . $redirect);
+        exit;
+    }
+
+    // Deconnexion
+    public function logout(): void {
+        session_destroy();
+        header('Location: ' . BASE_URL . '?action=login');
+        exit;
+    }
 }
