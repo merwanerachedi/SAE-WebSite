@@ -4,9 +4,9 @@ USE restaurant_db;
 -- Utilisateurs
 -- admin123 et user123 hashes avec password_hash PHP
 INSERT INTO users (nom, prenom, email, password, role) VALUES
-('Admin',   'Marco',  'admin@chezmarco.fr', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin'),
-('Dupont',  'Alice',  'alice@mail.fr',      '$2y$10$TKh8H1.PfbuKZ7Cvf34LT.h1heRseuurAXBm.jSsfnJXDCVC1WoBy', 'user'),
-('Bernard', 'Julien', 'julien@mail.fr',     '$2y$10$TKh8H1.PfbuKZ7Cvf34LT.h1heRseuurAXBm.jSsfnJXDCVC1WoBy', 'user');
+('Admin',   'Marco',  'admin@chezmarco.fr', '$2y$10$g4kJmTL18Kejg/e2voItjeSUr1NX.cwZr6.FDJG4upcmU.EkpvPSu', 'admin'),
+('Dupont',  'Alice',  'alice@mail.fr',      '$2y$10$3udKYrzJuZeQUIx1BzEZ1.MYFV4XDQMPnV3fK.9StY2qp3nGQscD2', 'user'),
+('Bernard', 'Julien', 'julien@mail.fr',     '$2y$10$3udKYrzJuZeQUIx1BzEZ1.MYFV4XDQMPnV3fK.9StY2qp3nGQscD2', 'user');
 
 -- Profils (relation 1-1)
 INSERT INTO profils (user_id, telephone, adresse, date_naissance) VALUES
