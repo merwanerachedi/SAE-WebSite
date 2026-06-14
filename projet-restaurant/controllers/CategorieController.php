@@ -23,7 +23,7 @@ class CategorieController {
         $nom  = trim($_POST['nom'] ?? '');
         $desc = trim($_POST['description'] ?? '');
         if ($nom) $this->model->create($nom, $desc);
-        header('Location: /?action=categories'); exit;
+        header('Location: ' . BASE_URL . '?action=categories'); exit;
     }
 
     public function edit(): void {
@@ -36,12 +36,12 @@ class CategorieController {
     public function update(): void {
         requireRole('admin');
         $this->model->update((int)$_POST['id'], trim($_POST['nom'] ?? ''), trim($_POST['description'] ?? ''));
-        header('Location: /?action=categories'); exit;
+        header('Location: ' . BASE_URL . '?action=categories'); exit;
     }
 
     public function delete(): void {
         requireRole('admin');
         $this->model->delete((int)($_GET['id'] ?? 0));
-        header('Location: /?action=categories'); exit;
+        header('Location: ' . BASE_URL . '?action=categories'); exit;
     }
 }
