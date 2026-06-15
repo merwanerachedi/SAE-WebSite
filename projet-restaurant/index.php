@@ -5,11 +5,13 @@ require_once 'config/helpers.php';
 require_once 'controllers/AuthController.php';
 require_once 'controllers/CategorieController.php';
 require_once 'controllers/PlatController.php';
+require_once 'controllers/MenuController.php';
 
 
 $auth = new AuthController($pdo);
 $cat = new CategorieController($pdo);
 $platCtrl = new PlatController($pdo);
+$menuCtrl = new MenuController($pdo);
 $action = $_GET['action'] ?? 'home';
 
 switch ($action) {
@@ -39,6 +41,12 @@ switch ($action) {
     case 'plat_update':   $platCtrl->update();     break;
     case 'plat_delete':   $platCtrl->delete();     break;
 
+    case 'menus':         $menuCtrl->index();      break;
+    case 'menu_create':   $menuCtrl->create();     break;
+    case 'menu_store':    $menuCtrl->store();      break;
+    case 'menu_edit':     $menuCtrl->edit();       break;
+    case 'menu_update':   $menuCtrl->update();     break;
+    case 'menu_delete':   $menuCtrl->delete();     break;
 
     default:
         http_response_code(404);
