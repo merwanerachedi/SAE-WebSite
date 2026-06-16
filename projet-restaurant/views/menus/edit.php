@@ -21,7 +21,27 @@
             <input type="checkbox" class="form-check-input" id="actif" name="actif" value="1" <?= $menu['actif'] ? 'checked' : '' ?>>
             <label class="form-check-label" for="actif">Actif</label>
         </div>
-        <button type="submit" class="btn btn-success">Mettre à jour</button>
+        <div class="mb-3">
+            <label class="form-label fw-bold">Plats inclus dans ce menu</label>
+            <div class="row row-cols-2 row-cols-md-3 g-2">
+                <?php foreach ($plats as $plat): ?>
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox"
+                               name="plat_ids[]"
+                               value="<?= $plat['id'] ?>"
+                               id="plat_<?= $plat['id'] ?>"
+                               <?= isset($platsMenu) && in_array($plat['id'], $platsMenu) ? 'checked' : '' ?>>
+                        <label class="form-check-label" for="plat_<?= $plat['id'] ?>">
+                            <?= htmlspecialchars($plat['nom']) ?>
+                            <small class="text-muted">(<?= number_format($plat['prix'], 2) ?> €)</small>
+                        </label>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Mettre a jour</button>
         <a href="<?= BASE_URL ?>?action=menus" class="btn btn-secondary">Annuler</a>
     </form>
 </div>

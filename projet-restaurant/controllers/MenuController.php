@@ -1,11 +1,14 @@
 <?php
 require_once 'models/Menu.php';
+require_once 'models/Plat.php';
 
 class MenuController {
     private Menu $menuModel;
+    private Plat $platModel;
 
     public function __construct(PDO $pdo) {
         $this->menuModel = new Menu($pdo);
+        $this->platModel = new Plat($pdo);
     }
 
     // Affiche la liste des menus
@@ -18,16 +21,17 @@ class MenuController {
         require 'views/layout/footer.php';
     }
 
-    // Affiche le formulaire de création
+    // Affiche le formulaire de creation avec liste des plats
     public function create() {
         requireRole('admin');
+        $plats = $this->platModel->getAll();
         $title = 'Ajouter un menu';
         require 'views/layout/header.php';
         require 'views/menus/create.php';
         require 'views/layout/footer.php';
     }
 
-    // Enregistre un nouveau menu
+    // Enregistre un nouveau menu et synchronise les plats
     public function store() {
         requireRole('admin');
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -37,12 +41,14 @@ class MenuController {
             $actif = isset($_POST['actif']) ? 1 : 0;
 
             if ($nom && $prix > 0) {
-                $this->menuModel->create($nom, $description, $prix, $actif);
-                setFlash('success', 'Menu ajouté avec succès.');
+                $menuId = $this->menuModel->create($nom, $description, $prix, $actif);
+                $this->menuModel->syncPlats($menuId, $_POST['plat_ids'] ?? []);
+                setFlash('success', 'Menu ajoute avec succes.');
                 header('Location: ' . BASE_URL . '?action=menus');
                 exit;
             } else {
                 $error = 'Le nom et un prix valide sont requis.';
+                $plats = $this->platModel->getAll();
                 $title = 'Ajouter un menu';
                 require 'views/layout/header.php';
                 require 'views/menus/create.php';
@@ -51,7 +57,7 @@ class MenuController {
         }
     }
 
-    // Affiche le formulaire de modification
+    // Affiche le formulaire de modification avec plats pre-coches
     public function edit() {
         requireRole('admin');
         $id = (int)($_GET['id'] ?? 0);
@@ -63,13 +69,15 @@ class MenuController {
             exit;
         }
 
-        $title = 'Modifier le menu';
+        $plats     = $this->platModel->getAll();
+        $platsMenu = array_column($this->menuModel->getPlats($id), 'id');
+        $title     = 'Modifier le menu';
         require 'views/layout/header.php';
         require 'views/menus/edit.php';
         require 'views/layout/footer.php';
     }
 
-    // Met à jour un menu existant
+    // Met a jour un menu et synchronise les plats
     public function update() {
         requireRole('admin');
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -81,12 +89,15 @@ class MenuController {
 
             if ($id && $nom && $prix > 0) {
                 $this->menuModel->update($id, $nom, $description, $prix, $actif);
-                setFlash('success', 'Menu modifié avec succès.');
+                $this->menuModel->syncPlats($id, $_POST['plat_ids'] ?? []);
+                setFlash('success', 'Menu modifie avec succes.');
                 header('Location: ' . BASE_URL . '?action=menus');
                 exit;
             } else {
-                $error = 'Données invalides.';
+                $error = 'Donnees invalides.';
                 $menu = $this->menuModel->findById($id);
+                $plats     = $this->platModel->getAll();
+                $platsMenu = array_column($this->menuModel->getPlats($id), 'id');
                 $title = 'Modifier le menu';
                 require 'views/layout/header.php';
                 require 'views/menus/edit.php';
@@ -102,7 +113,7 @@ class MenuController {
             $id = (int)($_POST['id'] ?? 0);
             if ($id) {
                 $this->menuModel->delete($id);
-                setFlash('success', 'Menu supprimé avec succès.');
+                setFlash('success', 'Menu supprime avec succes.');
             }
             header('Location: ' . BASE_URL . '?action=menus');
             exit;
