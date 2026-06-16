@@ -10,6 +10,7 @@ class MenuController {
 
     // Affiche la liste des menus
     public function index() {
+        requireRole('admin');
         $menus = $this->menuModel->getAll();
         $title = 'Gestion des Menus';
         require 'views/layout/header.php';
@@ -19,6 +20,7 @@ class MenuController {
 
     // Affiche le formulaire de création
     public function create() {
+        requireRole('admin');
         $title = 'Ajouter un menu';
         require 'views/layout/header.php';
         require 'views/menus/create.php';
@@ -27,6 +29,7 @@ class MenuController {
 
     // Enregistre un nouveau menu
     public function store() {
+        requireRole('admin');
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nom = $_POST['nom'] ?? '';
             $description = $_POST['description'] ?? '';
@@ -50,6 +53,7 @@ class MenuController {
 
     // Affiche le formulaire de modification
     public function edit() {
+        requireRole('admin');
         $id = (int)($_GET['id'] ?? 0);
         $menu = $this->menuModel->findById($id);
 
@@ -67,6 +71,7 @@ class MenuController {
 
     // Met à jour un menu existant
     public function update() {
+        requireRole('admin');
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = (int)($_POST['id'] ?? 0);
             $nom = $_POST['nom'] ?? '';
@@ -92,6 +97,7 @@ class MenuController {
 
     // Supprime un menu
     public function delete() {
+        requireRole('admin');
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = (int)($_POST['id'] ?? 0);
             if ($id) {
