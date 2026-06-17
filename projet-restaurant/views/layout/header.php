@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>public/css/style.css">
 </head>
 <body>
+<script>const BASE_URL = '<?= BASE_URL ?>';</script>
 <nav class="navbar navbar-expand-lg navbar-dark navbar-marco">
     <div class="container">
         <a class="navbar-brand" href="<?= BASE_URL ?>?action=home">Chez Marco</a>
