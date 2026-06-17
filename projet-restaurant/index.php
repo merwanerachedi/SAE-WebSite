@@ -6,12 +6,14 @@ require_once 'controllers/AuthController.php';
 require_once 'controllers/CategorieController.php';
 require_once 'controllers/PlatController.php';
 require_once 'controllers/MenuController.php';
+require_once 'controllers/CommandeController.php';
 
 
 $auth = new AuthController($pdo);
 $cat = new CategorieController($pdo);
 $platCtrl = new PlatController($pdo);
-$menuCtrl = new MenuController($pdo);
+$menuCtrl  = new MenuController($pdo);
+$cmdCtrl   = new CommandeController($pdo);
 $action = $_GET['action'] ?? 'home';
 
 switch ($action) {
@@ -47,6 +49,8 @@ switch ($action) {
     case 'menu_edit':     $menuCtrl->edit();       break;
     case 'menu_update':   $menuCtrl->update();     break;
     case 'menu_delete':   $menuCtrl->delete();     break;
+
+    case 'plats':         $cmdCtrl->showPlats();    break;
 
     default:
         http_response_code(404);
