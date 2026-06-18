@@ -51,6 +51,7 @@ switch ($action) {
     case 'menu_delete':   $menuCtrl->delete();     break;
 
     case 'plats':         $cmdCtrl->showPlats();    break;
+    case 'commande_store':  $cmdCtrl->store();     break;
 
     default:
         http_response_code(404);
