@@ -50,8 +50,10 @@ switch ($action) {
     case 'menu_update':   $menuCtrl->update();     break;
     case 'menu_delete':   $menuCtrl->delete();     break;
 
-    case 'plats':         $cmdCtrl->showPlats();    break;
-    case 'commande_store':  $cmdCtrl->store();     break;
+    case 'plats':           $cmdCtrl->showPlats();   break;
+    case 'commande_store':  $cmdCtrl->store();       break;
+    case 'mes_commandes':   $cmdCtrl->historique();  break;
+    case 'commande_show':   $cmdCtrl->show();        break;
 
     default:
         http_response_code(404);
