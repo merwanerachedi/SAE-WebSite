@@ -88,4 +88,24 @@ class CommandeController {
         $title  = 'Commande #' . $id;
         require 'views/commandes/show.php';
     }
+
+    /* Affiche toutes les commandes pour l'interface d'administration. */
+    public function adminIndex(): void {
+        requireRole('admin');
+        $commandes = $this->commandeModel->getAll();
+        $title     = 'Toutes les commandes';
+        require 'views/commandes/admin_index.php';
+    }
+
+    /* Met à jour le statut d'une commande — statut validé par whitelist. */
+    public function updateStatut(): void {
+        requireRole('admin');
+        $statuts_valides = ['en_attente', 'confirmée', 'livrée', 'annulée'];
+        $statut = $_POST['statut'] ?? '';
+        if (in_array($statut, $statuts_valides)) {
+            $this->commandeModel->updateStatut((int)$_POST['id'], $statut);
+        }
+        header('Location: /?action=admin_commandes');
+        exit;
+    }
 }
