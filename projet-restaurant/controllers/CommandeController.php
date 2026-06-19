@@ -64,4 +64,28 @@ class CommandeController {
 
         echo json_encode(['success' => true, 'commande_id' => $commandeId]);
     }
+
+    /* Affiche l'historique des commandes de l'utilisateur connecté. */
+    public function historique(): void {
+        requireAuth();
+        $commandes = $this->commandeModel->getByUser($_SESSION['user_id']);
+        $title     = 'Mes commandes';
+        require 'views/commandes/historique.php';
+    }
+
+    /* Affiche le détail d'une commande — 403 si l'utilisateur n'en est pas propriétaire. */
+    public function show(): void {
+        requireAuth();
+        $id       = (int)($_GET['id'] ?? 0);
+        $commande = $this->commandeModel->findById($id);
+
+        if (!$commande || ($commande['user_id'] !== $_SESSION['user_id'] && $_SESSION['role'] !== 'admin')) {
+            http_response_code(403);
+            die('<h2>Accès refusé.</h2><a href="' . BASE_URL . '?action=mes_commandes">Retour</a>');
+        }
+
+        $lignes = $this->commandeModel->getLignes($id);
+        $title  = 'Commande #' . $id;
+        require 'views/commandes/show.php';
+    }
 }
