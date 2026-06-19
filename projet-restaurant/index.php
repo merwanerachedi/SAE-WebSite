@@ -9,7 +9,6 @@ require_once 'controllers/MenuController.php';
 require_once 'controllers/CommandeController.php';
 require_once 'controllers/ProfilController.php';
 
-
 $auth = new AuthController($pdo);
 $cat = new CategorieController($pdo);
 $platCtrl = new PlatController($pdo);
@@ -52,16 +51,15 @@ switch ($action) {
     case 'menu_update':   $menuCtrl->update();     break;
     case 'menu_delete':   $menuCtrl->delete();     break;
 
-    case 'plats':           $cmdCtrl->showPlats();     break;
-    case 'commande_store':  $cmdCtrl->store();         break;
-    case 'mes_commandes':   $cmdCtrl->historique();    break;
-    case 'commande_show':   $cmdCtrl->show();          break;
-    case 'admin_commandes': $cmdCtrl->adminIndex();    break;
-    case 'commande_statut': $cmdCtrl->updateStatut();  break;
-
-    case 'profil':        $profilCtrl->show();   break;
-    case 'profil_update': $profilCtrl->update(); break;
-
+    case 'plats':           $cmdCtrl->showPlats();   break;
+    case 'commande_store':  $cmdCtrl->store();       break;
+    case 'mes_commandes':   $cmdCtrl->historique();  break;
+    case 'commande_show':   $cmdCtrl->show();        break;
+    case 'admin_commandes':   $cmdCtrl->adminIndex();    break;
+    case 'commande_statut':   $cmdCtrl->updateStatut();  break;
+    case 'profil':            $profilCtrl->show();           break;
+    case 'profil_update':     $profilCtrl->update();         break;
+    
     default:
         http_response_code(404);
         echo '404 - Page non trouvee';

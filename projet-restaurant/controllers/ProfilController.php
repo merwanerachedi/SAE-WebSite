@@ -31,7 +31,7 @@ class ProfilController {
 
             $this->profilModel->update($_SESSION['user_id'], $telephone, $adresse, $dateNaiss);
 
-            header('Location: /?action=profil&success=1');
+            header('Location: ' . BASE_URL . '?action=profil&success=1');
             exit;
         }
     }

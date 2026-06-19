@@ -31,7 +31,7 @@
                     <h5 class="card-title mb-0">Informations complémentaires</h5>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="/?action=profil_update">
+                    <form method="POST" action="<?= BASE_URL ?>?action=profil_update">
                         <div class="mb-3">
                             <label class="form-label" for="telephone">Téléphone</label>
                             <input type="text" id="telephone" name="telephone" class="form-control" value="<?= htmlspecialchars($profil['telephone'] ?? '') ?>">
