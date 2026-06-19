@@ -47,7 +47,7 @@
             </tfoot>
         </table>
 
-        <a href="/?action=mes_commandes" class="btn btn-outline-dark">← Mes commandes</a>
+        <a href="<?= BASE_URL ?>?action=mes_commandes" class="btn btn-outline-dark">← Mes commandes</a>
     </div>
 </div>
 <?php require 'views/layout/footer.php'; ?>

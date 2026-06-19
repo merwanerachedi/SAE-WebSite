@@ -81,7 +81,7 @@ class CommandeController {
 
         if (!$commande || ($commande['user_id'] !== $_SESSION['user_id'] && $_SESSION['role'] !== 'admin')) {
             http_response_code(403);
-            die('<h2>Accès refusé.</h2><a href="/?action=mes_commandes">Retour</a>');
+            die('<h2>Accès refusé.</h2><a href="' . BASE_URL . '?action=mes_commandes">Retour</a>');
         }
 
         $lignes = $this->commandeModel->getLignes($id);

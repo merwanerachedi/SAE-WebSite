@@ -4,7 +4,7 @@
 <?php if (empty($commandes)): ?>
     <div class="alert alert-info">
         Vous n'avez pas encore passé de commande.
-        <a href="/?action=plats">Voir la carte</a>
+        <a href="<?= BASE_URL ?>?action=plats">Voir la carte</a>
     </div>
 <?php else: ?>
     <table class="table table-hover">
@@ -35,7 +35,7 @@
                 <td><?= number_format($cmd['total'], 2) ?> €</td>
                 <td><span class="badge <?= $badge ?>"><?= htmlspecialchars($cmd['statut']) ?></span></td>
                 <td>
-                    <a href="/?action=commande_show&id=<?= $cmd['id'] ?>" class="btn btn-sm btn-outline-dark">
+                    <a href="<?= BASE_URL ?>?action=commande_show&id=<?= $cmd['id'] ?>" class="btn btn-sm btn-outline-dark">
                         Détail
                     </a>
                 </td>
