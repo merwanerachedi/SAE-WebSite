@@ -10,7 +10,7 @@
             <td><?= htmlspecialchars($user['prenom'] . ' ' . $user['nom']) ?></td>
             <td><?= htmlspecialchars($user['email']) ?></td>
             <td>
-                <form method="POST" action="/?action=admin_user_role" class="d-flex gap-2 align-items-center">
+                <form method="POST" action="<?= BASE_URL ?>?action=admin_user_role" class="d-flex gap-2 align-items-center">
                     <input type="hidden" name="id" value="<?= $user['id'] ?>">
                     <select name="role" class="form-select form-select-sm" style="width:auto">
                         <option value="user"  <?= $user['role'] === 'user'  ? 'selected' : '' ?>>user</option>
@@ -23,7 +23,7 @@
             <td>
                 <?php if ($user['id'] !== $_SESSION['user_id']): ?>
                     <button class="btn btn-sm btn-outline-danger btn-delete"
-                            data-href="/?action=admin_user_delete&id=<?= $user['id'] ?>">
+                            data-href="<?= BASE_URL ?>?action=admin_user_delete&id=<?= $user['id'] ?>">
                         Supprimer
                     </button>
                 <?php else: ?>

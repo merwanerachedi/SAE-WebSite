@@ -21,7 +21,7 @@
                 </span>
             </td>
             <td>
-                <form method="POST" action="/?action=commande_statut" class="d-flex gap-2">
+                <form method="POST" action="<?= BASE_URL ?>?action=commande_statut" class="d-flex gap-2">
                     <input type="hidden" name="id" value="<?= $cmd['id'] ?>">
                     <select name="statut" class="form-select form-select-sm" style="width:auto">
                         <?php foreach (['en_attente', 'confirmée', 'livrée', 'annulée'] as $s): ?>

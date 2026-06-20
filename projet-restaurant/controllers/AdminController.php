@@ -41,7 +41,7 @@ class AdminController {
         if (in_array($role, ['admin', 'user'])) {
             (new User($this->pdo))->updateRole((int)$_POST['id'], $role);
         }
-        header('Location: /?action=admin_users');
+        header('Location: ' . BASE_URL . '?action=admin_users');
         exit;
     }
 
@@ -53,7 +53,7 @@ class AdminController {
         if ($id !== $_SESSION['user_id']) {
             (new User($this->pdo))->delete($id);
         }
-        header('Location: /?action=admin_users');
+        header('Location: ' . BASE_URL . '?action=admin_users');
         exit;
     }
 }
