@@ -105,7 +105,7 @@ class CommandeController {
         if (in_array($statut, $statuts_valides)) {
             $this->commandeModel->updateStatut((int)$_POST['id'], $statut);
         }
-        header('Location: /?action=admin_commandes');
+        header('Location: ' . BASE_URL . '?action=admin_commandes');
         exit;
     }
 }
