@@ -150,6 +150,6 @@ Ce modèle est hautement scalé pour la lecture puisqu'une seule requête récup
 ---
 
 ## 10. Auteurs
-- **Étudiant(e)(s)** : Merwane Rachedi (ou le nom approprié de l'équipe)
-- **Université** : Université / IUT de rattachement
+- **Étudiants** : Merwane Soltane Zakaria RACHEDI / Salim Nekhla
+- **Université** : Université Sorbonne Paris Nord - Institut Galilée
 - **Année** : 2026
