@@ -63,6 +63,11 @@ switch ($action) {
     case 'profil_update':     $profilCtrl->update();         break;
     case 'admin_dashboard':   $adminCtrl->dashboard();       break;
     
+    // Gestion des utilisateurs (Admin)
+    case 'admin_users':       $adminCtrl->users();          break;
+    case 'admin_user_role':   $adminCtrl->updateUserRole(); break;
+    case 'admin_user_delete': $adminCtrl->deleteUser();     break;
+
     default:
         http_response_code(404);
         echo '404 - Page non trouvee';
