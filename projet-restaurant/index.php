@@ -8,6 +8,7 @@ require_once 'controllers/PlatController.php';
 require_once 'controllers/MenuController.php';
 require_once 'controllers/CommandeController.php';
 require_once 'controllers/ProfilController.php';
+require_once 'controllers/AdminController.php';
 
 $auth = new AuthController($pdo);
 $cat = new CategorieController($pdo);
@@ -15,6 +16,7 @@ $platCtrl = new PlatController($pdo);
 $menuCtrl  = new MenuController($pdo);
 $cmdCtrl   = new CommandeController($pdo);
 $profilCtrl = new ProfilController($pdo);
+$adminCtrl  = new AdminController($pdo);
 $action = $_GET['action'] ?? 'home';
 
 switch ($action) {
@@ -59,6 +61,7 @@ switch ($action) {
     case 'commande_statut':   $cmdCtrl->updateStatut();  break;
     case 'profil':            $profilCtrl->show();           break;
     case 'profil_update':     $profilCtrl->update();         break;
+    case 'admin_dashboard':   $adminCtrl->dashboard();       break;
     
     default:
         http_response_code(404);
