@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS restaurant_db;
+CREATE DATABASE restaurant_db;
+USE restaurant_db;
+
 -- Utilisateurs
 CREATE TABLE users (
     id         INT AUTO_INCREMENT PRIMARY KEY,

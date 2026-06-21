@@ -33,16 +33,23 @@ const cart = {
         if (!container) return;
 
         if (this.items.length === 0) {
-            container.innerHTML = '<p class="text-muted small">Votre panier est vide.</p>';
+            container.innerHTML = '<p class="text-muted">Votre panier est vide.</p>';
         } else {
             container.innerHTML = this.items.map(item => `
-                <div class="d-flex justify-content-between align-items-center mb-2">
+                <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom" style="border-color: rgba(0,0,0,0.05) !important;">
                     <div>
-                        <span class="fw-semibold">${item.nom}</span><br>
-                        <small class="text-muted">x${item.quantite} — ${(item.prix * item.quantite).toFixed(2)} €</small>
+                        <div class="fw-bold mb-1" style="font-size: 0.95rem;">${item.nom}</div>
+                        <div class="text-muted" style="font-size: 0.85rem;">
+                            <span class="badge text-dark border px-2 py-1 me-2" style="background-color: #FBF9F6;">x${item.quantite}</span>
+                            <span class="fw-semibold">${(item.prix * item.quantite).toFixed(2)} €</span>
+                        </div>
                     </div>
-                    <button class="btn btn-sm btn-outline-danger py-0"
-                            onclick="cart.remove(${item.id})">x</button>
+                    <button class="btn btn-sm btn-outline-danger rounded-circle d-flex justify-content-center align-items-center p-0 transition shadow-sm"
+                            style="width: 32px; height: 32px;"
+                            onclick="cart.remove(${item.id})"
+                            title="Supprimer">
+                        <i class="bi bi-trash3"></i>
+                    </button>
                 </div>
             `).join('');
         }

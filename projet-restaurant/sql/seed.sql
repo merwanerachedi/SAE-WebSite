@@ -22,17 +22,17 @@ INSERT INTO categories (nom, description) VALUES
 ('Boissons', 'Boissons chaudes et froides');
 
 -- Plats
-INSERT INTO plats (nom, description, prix, disponible, categorie_id) VALUES
-('Bruschetta',              'Pain grille, tomates, basilic',          6.50,  1, 1),
-('Salade Cesar',            'Romaine, parmesan, croutons',            8.00,  1, 1),
-('Spaghetti Carbonara',     'Spaghetti, lardons, parmesan, oeuf',    13.50, 1, 2),
-('Penne Arrabiata',         'Penne, sauce tomate epicee',            11.00, 1, 2),
-('Pizza Margherita',        'Tomate, mozzarella, basilic',           12.00, 1, 2),
-('Risotto aux champignons', 'Riz arborio, champignons, parmesan',   14.50, 1, 2),
-('Tiramisu',                'Mascarpone, cafe, biscuits, cacao',      6.00, 1, 3),
-('Panna Cotta',             'Creme vanille, coulis fruits rouges',    5.50, 1, 3),
-('Cafe Espresso',           'Expresso simple',                        2.50, 1, 4),
-('Eau minerale',            'Bouteille 50cl',                         2.00, 1, 4);
+INSERT INTO plats (nom, description, prix, disponible, categorie_id, image_url) VALUES
+('Bruschetta',              'Pain grille, tomates, basilic',          6.50,  1, 1, 'public/uploads/plats/bruschetta.png'),
+('Salade Cesar',            'Romaine, parmesan, croutons',            8.00,  1, 1, 'public/uploads/plats/Salade-Cesar.png'),
+('Spaghetti Carbonara',     'Spaghetti, lardons, parmesan, oeuf',    13.50, 1, 2, 'public/uploads/plats/Spaghetti-Carbonara.png'),
+('Penne Arrabiata',         'Penne, sauce tomate epicee',            11.00, 1, 2, 'public/uploads/plats/Penne-Arrabiata.png'),
+('Pizza Margherita',        'Tomate, mozzarella, basilic',           12.00, 1, 2, 'public/uploads/plats/Pizza-Margherita.png'),
+('Risotto aux champignons', 'Riz arborio, champignons, parmesan',   14.50, 1, 2, 'public/uploads/plats/Risotto-aux-champignons.png'),
+('Tiramisu',                'Mascarpone, cafe, biscuits, cacao',      6.00, 1, 3, 'public/uploads/plats/Tiramisu.png'),
+('Panna Cotta',             'Creme vanille, coulis fruits rouges',    5.50, 1, 3, 'public/uploads/plats/Panna-Cotta.png'),
+('Cafe Espresso',           'Expresso simple',                        2.50, 1, 4, 'public/uploads/plats/Cafe-Espresso.png'),
+('Eau minerale',            'Bouteille 50cl',                         2.00, 1, 4, 'public/uploads/plats/Eau-minerale.png');
 
 -- Menus
 INSERT INTO menus (nom, description, prix, actif) VALUES

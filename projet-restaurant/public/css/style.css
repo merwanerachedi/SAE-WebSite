@@ -1,21 +1,22 @@
 /* ============================================
    Chez Marco — Style global
-   Palette : noir #0C0E0B / bleu glace #D6E7F3
-             dore #c9a84c / rouge #D6303A
+   Palette : noir #1A1A1A / creme #FBF9F6
+             dore #C9A84C / rouge #D6303A
    Typo   : Playfair Display (titres) / Inter (corps)
    ============================================ */
 
 :root {
-    --color-noir: #0C0E0B;
-    --color-blanc: #D6E7F3;
-    --color-dore: #c9a84c;
+    --color-noir: #1A1A1A;
+    --color-blanc: #FBF9F6;
+    --color-blanc-pur: #FFFFFF;
+    --color-dore: #C9A84C;
     --color-rouge: #D6303A;
     --color-gris: #6c757d;
     --color-gris-clair: #e9e5df;
     --font-titre: 'Playfair Display', Georgia, serif;
     --font-corps: 'Inter', system-ui, sans-serif;
-    --radius: 10px;
-    --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.08);
+    --radius: 12px;
+    --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.04);
     --transition: 0.2s ease;
 }
 
@@ -30,7 +31,10 @@ body {
     flex-direction: column;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: var(--font-titre);
     color: var(--color-noir);
 }
@@ -38,17 +42,20 @@ h1, h2, h3, h4 {
 /* --- Navbar --- */
 
 .navbar-marco {
-    background-color: var(--color-noir);
-    padding: 0.8rem 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    background-color: rgba(26, 26, 26, 0.98);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
 }
 
 .navbar-marco .navbar-brand {
     font-family: var(--font-titre);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--color-dore);
     transition: color var(--transition);
+    letter-spacing: 0.5px;
 }
 
 .navbar-marco .navbar-brand:hover {
@@ -56,15 +63,39 @@ h1, h2, h3, h4 {
 }
 
 .navbar-marco .nav-link {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.75);
     font-weight: 500;
-    font-size: 0.9rem;
-    padding: 0.5rem 0.9rem;
-    transition: color var(--transition);
+    font-size: 0.95rem;
+    padding: 0.5rem 1.2rem;
+    transition: all var(--transition);
+    position: relative;
+}
+
+.navbar-marco .nav-link:not(.btn-inscription)::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--color-dore);
+    transition: width var(--transition);
+    border-radius: 2px;
 }
 
 .navbar-marco .nav-link:hover {
+    color: var(--color-blanc-pur);
+}
+
+.navbar-marco .nav-link:not(.btn-inscription):hover::after,
+.navbar-marco .nav-link.active:not(.btn-inscription)::after {
+    width: 50%;
+}
+
+.navbar-marco .nav-link.active {
     color: var(--color-dore);
+    font-weight: 600;
 }
 
 .navbar-marco .nav-link-admin {
@@ -135,6 +166,7 @@ h1, h2, h3, h4 {
 /* --- Cartes --- */
 
 .card {
+    background-color: var(--color-blanc-pur);
     border: none;
     border-radius: var(--radius);
     box-shadow: var(--shadow-card);
@@ -202,6 +234,29 @@ h1, h2, h3, h4 {
 
 /* --- Utilitaires --- */
 
-.text-dore { color: var(--color-dore); }
-.text-rouge { color: var(--color-rouge); }
-.bg-marco { background-color: var(--color-blanc); }
+.text-dore {
+    color: var(--color-dore);
+}
+
+.text-rouge {
+    color: var(--color-rouge);
+}
+
+.bg-marco {
+    background-color: var(--color-blanc);
+}
+
+/* --- Filtres Catalogue --- */
+
+#filter-buttons .btn {
+    transition: all var(--transition);
+}
+
+#filter-buttons .btn.active {
+    background-color: var(--color-dore) !important;
+    border-color: var(--color-dore) !important;
+    color: var(--color-noir) !important;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(201, 168, 76, 0.4);
+    transform: translateY(-2px);
+}

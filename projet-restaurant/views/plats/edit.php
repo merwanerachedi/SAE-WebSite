@@ -1,6 +1,6 @@
 <?php require 'views/layout/header.php'; ?>
 <h2>Modifier le plat</h2>
-<form method="POST" action="<?= BASE_URL ?>?action=plat_update" class="col-md-7">
+<form method="POST" action="<?= BASE_URL ?>?action=plat_update" enctype="multipart/form-data" class="col-md-7">
     <input type="hidden" name="id" value="<?= $plat['id'] ?>">
     <div class="mb-3">
         <label class="form-label">Nom</label>
@@ -28,6 +28,19 @@
                 <?php endforeach; ?>
             </select>
         </div>
+    </div>
+    <!-- Image actuelle + champ upload -->
+    <div class="mb-3">
+        <label for="image" class="form-label">Image du plat</label>
+        <?php if (!empty($plat['image_url'])): ?>
+            <div class="mb-2">
+                <img src="<?= BASE_URL . $plat['image_url'] ?>" alt="Image actuelle"
+                     class="rounded" style="max-height: 150px; object-fit: cover;">
+                <div class="form-text">Image actuelle</div>
+            </div>
+        <?php endif; ?>
+        <input type="file" class="form-control" id="image" name="image" accept="image/jpeg, image/png, image/webp">
+        <div class="form-text">Laisser vide pour conserver l'image actuelle. JPG, PNG ou WebP — 10 Mo max</div>
     </div>
     <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" name="disponible" value="1"
