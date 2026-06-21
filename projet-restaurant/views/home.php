@@ -2,7 +2,7 @@
 
 <!-- Hero Section -->
 <div class="position-relative d-flex align-items-center justify-content-center mb-5" 
-     style="min-height: 65vh; margin-top: -1.5rem; background: linear-gradient(rgba(26, 26, 26, 0.65), rgba(26, 26, 26, 0.8)), url('https://images.unsplash.com/photo-1498579150354-979475344aef?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;">
+     style="min-height: 65vh; margin-top: -1.5rem; background: linear-gradient(rgba(26, 26, 26, 0.65), rgba(26, 26, 26, 0.8)), url('<?= BASE_URL ?>public/assets/img/hero-bg.png') center/cover no-repeat;">
     
     <div class="text-center px-4" style="max-width: 800px; z-index: 1;">
         <h1 class="display-3 fw-bold mb-4" style="font-family: var(--font-titre); color: var(--color-blanc);">
