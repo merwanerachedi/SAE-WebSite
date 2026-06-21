@@ -27,21 +27,21 @@
     <div class="row g-4 text-center">
         <div class="col-md-4">
             <div class="p-4 card h-100 border-0">
-                <div class="mb-3" style="font-size: 2.5rem;">🍝</div>
+                <div class="mb-3 text-dore" style="font-size: 2.5rem;"><i class="bi bi-house-heart"></i></div>
                 <h4 class="mb-3 text-dore">Fait Maison</h4>
                 <p class="text-muted">Toutes nos pâtes sont préparées chaque matin par notre chef avec de la farine italienne sélectionnée avec amour.</p>
             </div>
         </div>
         <div class="col-md-4">
             <div class="p-4 card h-100 border-0">
-                <div class="mb-3" style="font-size: 2.5rem;">🍅</div>
+                <div class="mb-3 text-dore" style="font-size: 2.5rem;"><i class="bi bi-basket2"></i></div>
                 <h4 class="mb-3 text-dore">Produits Frais</h4>
                 <p class="text-muted">Des ingrédients importés directement d'Italie et des légumes de nos producteurs locaux partenaires.</p>
             </div>
         </div>
         <div class="col-md-4">
             <div class="p-4 card h-100 border-0">
-                <div class="mb-3" style="font-size: 2.5rem;">🍷</div>
+                <div class="mb-3 text-dore" style="font-size: 2.5rem;"><i class="bi bi-cup-straw"></i></div>
                 <h4 class="mb-3 text-dore">Cave d'Exception</h4>
                 <p class="text-muted">Une sélection pointue de vins italiens pour accompagner parfaitement chaque plat de notre carte gourmande.</p>
             </div>

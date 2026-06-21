@@ -2,7 +2,7 @@
 <div class="row">
     <!-- Catalogue des plats -->
     <div class="col-md-8">
-        <h2 class="mb-3">🍽️ Notre carte</h2>
+        <h2 class="mb-3"><i class="bi bi-journal-text me-2"></i>Notre carte</h2>
 
         <!-- Boutons de filtre — fonctionnels à l'étape 15 -->
         <div class="mb-5 d-flex flex-wrap justify-content-center gap-3" id="filter-buttons">
@@ -49,7 +49,7 @@
                                     data-id="<?= $plat['id'] ?>"
                                     data-nom="<?= htmlspecialchars($plat['nom']) ?>"
                                     data-prix="<?= $plat['prix'] ?>">
-                                🛒 <span>Ajouter</span>
+                                <i class="bi bi-cart-plus"></i> <span>Ajouter</span>
                             </button>
                         </div>
                     </div>
@@ -59,22 +59,28 @@
         </div>
     </div>
 
-    <!-- Zone panier — fonctionnelle à l'étape 14 -->
+    <!-- Zone panier -->
     <div class="col-md-4">
-        <div class="card sticky-top shadow-sm" style="top: 80px">
-            <div class="card-body">
-                <h5>🛒 Mon panier <span class="badge bg-dark" id="cart-badge">0</span></h5>
-                <div id="cart-items">
-                    <p class="text-muted small">Votre panier est vide.</p>
+        <div class="card sticky-top shadow-sm border-0" style="top: 80px; border-radius: 16px;">
+            <div class="card-body p-4 p-xl-5">
+                <h4 class="mb-4 d-flex justify-content-between align-items-center fw-bold" style="font-family: 'Playfair Display', serif;">
+                    <span>Mon panier</span>
+                    <span class="badge rounded-pill" id="cart-badge" style="background-color: var(--marco-rouge); font-family: 'Inter', sans-serif; font-size: 1rem;">0</span>
+                </h4>
+                
+                <div id="cart-items" class="mb-4" style="min-height: 100px;">
+                    <p class="text-muted">Votre panier est vide.</p>
                 </div>
-                <hr>
-                <div class="d-flex justify-content-between fw-bold">
-                    <span>Total</span>
-                    <span id="cart-total">0.00 €</span>
+                
+                <div class="border-top pt-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <span class="text-muted text-uppercase fw-semibold" style="font-size: 0.85rem; letter-spacing: 1px;">Total à payer</span>
+                        <span class="fw-bold fs-3" id="cart-total" style="color: var(--marco-rouge);">0.00 €</span>
+                    </div>
+                    <button class="btn btn-dark w-100 rounded-pill py-3 fw-bold d-flex justify-content-center align-items-center gap-2 transition" id="btn-submit-cart" disabled style="font-size: 1.1rem;">
+                        Commander <i class="bi bi-arrow-right"></i>
+                    </button>
                 </div>
-                <button class="btn btn-dark w-100 mt-3" id="btn-submit-cart" disabled>
-                    Commander
-                </button>
             </div>
         </div>
     </div>
