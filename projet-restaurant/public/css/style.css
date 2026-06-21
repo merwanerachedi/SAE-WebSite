@@ -218,3 +218,18 @@ h4 {
 .bg-marco {
     background-color: var(--color-blanc);
 }
+
+/* --- Filtres Catalogue --- */
+
+#filter-buttons .btn {
+    transition: all var(--transition);
+}
+
+#filter-buttons .btn.active {
+    background-color: var(--color-dore) !important;
+    border-color: var(--color-dore) !important;
+    color: var(--color-noir) !important;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(201, 168, 76, 0.4);
+    transform: translateY(-2px);
+}

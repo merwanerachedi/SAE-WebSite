@@ -5,10 +5,10 @@
         <h2 class="mb-3">🍽️ Notre carte</h2>
 
         <!-- Boutons de filtre — fonctionnels à l'étape 15 -->
-        <div class="mb-4 d-flex flex-wrap gap-2" id="filter-buttons">
-            <button class="btn btn-dark btn-sm active" data-filter="all">Tous</button>
+        <div class="mb-5 d-flex flex-wrap justify-content-center gap-3" id="filter-buttons">
+            <button class="btn btn-dark btn-sm rounded-pill px-4 active" data-filter="all">Tous</button>
             <?php foreach ($categories as $cat): ?>
-                <button class="btn btn-outline-dark btn-sm" data-filter="<?= htmlspecialchars($cat) ?>">
+                <button class="btn btn-outline-dark btn-sm rounded-pill px-4" data-filter="<?= htmlspecialchars($cat) ?>">
                     <?= htmlspecialchars($cat) ?>
                 </button>
             <?php endforeach; ?>
