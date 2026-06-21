@@ -1,6 +1,6 @@
 <?php require 'views/layout/header.php'; ?>
 <h2>Nouveau plat</h2>
-<form method="POST" action="<?= BASE_URL ?>?action=plat_store" class="col-md-7">
+<form method="POST" action="<?= BASE_URL ?>?action=plat_store" enctype="multipart/form-data" class="col-md-7">
     <div class="mb-3">
         <label class="form-label">Nom</label>
         <input type="text" class="form-control" name="nom" required>
@@ -23,6 +23,11 @@
                 <?php endforeach; ?>
             </select>
         </div>
+    </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">Image du plat</label>
+        <input type="file" class="form-control" id="image" name="image" accept="image/jpeg, image/png, image/webp">
+        <div class="form-text">JPG, PNG ou WebP — 5 Mo max</div>
     </div>
     <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" name="disponible" value="1" checked>

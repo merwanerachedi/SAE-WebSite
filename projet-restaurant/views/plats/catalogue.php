@@ -19,6 +19,14 @@
             <?php foreach ($plats as $plat): ?>
             <div class="col plat-card" data-cat="<?= htmlspecialchars($plat['categorie_nom']) ?>">
                 <div class="card h-100 shadow-sm">
+                    <?php
+                    // Fallback local si pas d'image
+                    $imgSrc = !empty($plat['image_url'])
+                        ? BASE_URL . $plat['image_url']
+                        : BASE_URL . 'public/assets/img/default-plat.png';
+                    ?>
+                    <img src="<?= $imgSrc ?>" class="card-img-top" alt="<?= htmlspecialchars($plat['nom']) ?>"
+                         style="height: 200px; object-fit: cover;">
                     <div class="card-body p-4 d-flex flex-column">
                         <!-- Categorie discrete et elegante -->
                         <div class="text-uppercase text-dore mb-2" style="font-size: 0.75rem; font-weight: 600; letter-spacing: 1px;">

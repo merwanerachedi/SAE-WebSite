@@ -30,14 +30,21 @@ class Plat {
         return $stmt->fetch();
     }
 
-    public function create(string $nom, string $description, float $prix, int $disponible, int $categorieId): bool {
+    public function create(string $nom, string $description, float $prix, int $disponible, int $categorieId, ?string $imageUrl = null): bool {
         $stmt = $this->pdo->prepare(
-            'INSERT INTO plats (nom, description, prix, disponible, categorie_id) VALUES (?, ?, ?, ?, ?)'
+            'INSERT INTO plats (nom, description, prix, disponible, categorie_id, image_url) VALUES (?, ?, ?, ?, ?, ?)'
         );
-        return $stmt->execute([$nom, $description, $prix, $disponible, $categorieId]);
+        return $stmt->execute([$nom, $description, $prix, $disponible, $categorieId, $imageUrl]);
     }
 
-    public function update(int $id, string $nom, string $description, float $prix, int $disponible, int $categorieId): bool {
+    public function update(int $id, string $nom, string $description, float $prix, int $disponible, int $categorieId, ?string $imageUrl = null): bool {
+        // Si une nouvelle image est fournie, on la met a jour
+        if ($imageUrl !== null) {
+            $stmt = $this->pdo->prepare(
+                'UPDATE plats SET nom=?, description=?, prix=?, disponible=?, categorie_id=?, image_url=? WHERE id=?'
+            );
+            return $stmt->execute([$nom, $description, $prix, $disponible, $categorieId, $imageUrl, $id]);
+        }
         $stmt = $this->pdo->prepare(
             'UPDATE plats SET nom=?, description=?, prix=?, disponible=?, categorie_id=? WHERE id=?'
         );
