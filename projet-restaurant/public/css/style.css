@@ -1,21 +1,22 @@
 /* ============================================
    Chez Marco — Style global
-   Palette : noir #0C0E0B / bleu glace #D6E7F3
-             dore #c9a84c / rouge #D6303A
+   Palette : noir #1A1A1A / creme #FBF9F6
+             dore #C9A84C / rouge #D6303A
    Typo   : Playfair Display (titres) / Inter (corps)
    ============================================ */
 
 :root {
-    --color-noir: #0C0E0B;
-    --color-blanc: #D6E7F3;
-    --color-dore: #c9a84c;
+    --color-noir: #1A1A1A;
+    --color-blanc: #FBF9F6;
+    --color-blanc-pur: #FFFFFF;
+    --color-dore: #C9A84C;
     --color-rouge: #D6303A;
     --color-gris: #6c757d;
     --color-gris-clair: #e9e5df;
     --font-titre: 'Playfair Display', Georgia, serif;
     --font-corps: 'Inter', system-ui, sans-serif;
-    --radius: 10px;
-    --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.08);
+    --radius: 12px;
+    --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.04);
     --transition: 0.2s ease;
 }
 
@@ -30,7 +31,10 @@ body {
     flex-direction: column;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: var(--font-titre);
     color: var(--color-noir);
 }
@@ -135,6 +139,7 @@ h1, h2, h3, h4 {
 /* --- Cartes --- */
 
 .card {
+    background-color: var(--color-blanc-pur);
     border: none;
     border-radius: var(--radius);
     box-shadow: var(--shadow-card);
@@ -202,6 +207,14 @@ h1, h2, h3, h4 {
 
 /* --- Utilitaires --- */
 
-.text-dore { color: var(--color-dore); }
-.text-rouge { color: var(--color-rouge); }
-.bg-marco { background-color: var(--color-blanc); }
+.text-dore {
+    color: var(--color-dore);
+}
+
+.text-rouge {
+    color: var(--color-rouge);
+}
+
+.bg-marco {
+    background-color: var(--color-blanc);
+}
