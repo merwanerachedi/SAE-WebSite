@@ -1,4 +1,7 @@
-<?php $title = $title ?? 'Chez Marco'; ?>
+<?php 
+$title = $title ?? 'Chez Marco'; 
+$currentAction = $_GET['action'] ?? 'home';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,15 +25,15 @@
         <div class="collapse navbar-collapse" id="navbarMain">
             <div class="navbar-nav ms-auto">
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <a class="nav-link" href="<?= BASE_URL ?>?action=plats">Carte</a>
-                    <a class="nav-link" href="<?= BASE_URL ?>?action=mes_commandes">Mes commandes</a>
-                    <a class="nav-link" href="<?= BASE_URL ?>?action=profil"><?= htmlspecialchars($_SESSION['nom'] ?? '') ?></a>
+                    <a class="nav-link <?= $currentAction === 'plats' ? 'active' : '' ?>" href="<?= BASE_URL ?>?action=plats">Carte</a>
+                    <a class="nav-link <?= $currentAction === 'mes_commandes' ? 'active' : '' ?>" href="<?= BASE_URL ?>?action=mes_commandes">Mes commandes</a>
+                    <a class="nav-link <?= $currentAction === 'profil' ? 'active' : '' ?>" href="<?= BASE_URL ?>?action=profil"><?= htmlspecialchars($_SESSION['nom'] ?? '') ?></a>
                     <?php if ($_SESSION['role'] === 'admin'): ?>
-                        <a class="nav-link nav-link-admin" href="<?= BASE_URL ?>?action=admin_dashboard">Admin</a>
+                        <a class="nav-link nav-link-admin <?= str_starts_with($currentAction, 'admin') || str_starts_with($currentAction, 'plats_admin') ? 'active' : '' ?>" href="<?= BASE_URL ?>?action=admin_dashboard">Admin</a>
                     <?php endif; ?>
                     <a class="nav-link" href="<?= BASE_URL ?>?action=logout">Deconnexion</a>
                 <?php else: ?>
-                    <a class="nav-link" href="<?= BASE_URL ?>?action=login">Connexion</a>
+                    <a class="nav-link <?= $currentAction === 'login' ? 'active' : '' ?>" href="<?= BASE_URL ?>?action=login">Connexion</a>
                     <a class="nav-link btn-inscription" href="<?= BASE_URL ?>?action=register">Inscription</a>
                 <?php endif; ?>
             </div>
