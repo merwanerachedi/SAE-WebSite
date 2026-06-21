@@ -23,7 +23,7 @@ switch ($action) {
     case 'home':
         $title = 'Accueil';
         require 'views/layout/header.php';
-        echo '<h2 class="mt-4">Bienvenue chez Marco</h2>';
+        require 'views/home.php';
         require 'views/layout/footer.php';
         break;
     case 'register':      $auth->showRegister(); break;
