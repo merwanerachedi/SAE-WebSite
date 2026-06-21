@@ -19,22 +19,29 @@
             <?php foreach ($plats as $plat): ?>
             <div class="col plat-card" data-cat="<?= htmlspecialchars($plat['categorie_nom']) ?>">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-start mb-1">
-                            <h5 class="card-title mb-0"><?= htmlspecialchars($plat['nom']) ?></h5>
-                            <span class="badge bg-secondary"><?= htmlspecialchars($plat['categorie_nom']) ?></span>
+                    <div class="card-body p-4 d-flex flex-column">
+                        <!-- Categorie discrete et elegante -->
+                        <div class="text-uppercase text-dore mb-2" style="font-size: 0.75rem; font-weight: 600; letter-spacing: 1px;">
+                            <?= htmlspecialchars($plat['categorie_nom']) ?>
                         </div>
-                        <p class="card-text text-muted small mt-2">
+                        
+                        <!-- Nom du plat -->
+                        <h4 class="card-title mb-3" style="font-size: 1.3rem;"><?= htmlspecialchars($plat['nom']) ?></h4>
+                        
+                        <!-- Description flexible -->
+                        <p class="card-text text-muted mb-4 flex-grow-1" style="font-size: 0.95rem; line-height: 1.5;">
                             <?= htmlspecialchars($plat['description'] ?? '') ?>
                         </p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <strong class="text-dark"><?= number_format($plat['prix'], 2) ?> €</strong>
-                            <!-- Bouton panier — fonctionnel à l'étape 14 -->
-                            <button class="btn btn-dark btn-sm btn-add-cart"
+                        
+                        <!-- Zone Prix et Bouton (isolee par une bordure subtile) -->
+                        <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top" style="border-color: rgba(0,0,0,0.05) !important;">
+                            <span class="prix fs-4 mb-0"><?= number_format($plat['prix'], 2) ?> €</span>
+                            
+                            <button class="btn btn-dark rounded-pill px-4 py-2 btn-add-cart d-flex align-items-center gap-2 transition"
                                     data-id="<?= $plat['id'] ?>"
                                     data-nom="<?= htmlspecialchars($plat['nom']) ?>"
                                     data-prix="<?= $plat['prix'] ?>">
-                                + Ajouter
+                                🛒 <span>Ajouter</span>
                             </button>
                         </div>
                     </div>
